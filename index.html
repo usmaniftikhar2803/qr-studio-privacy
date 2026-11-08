@@ -4,97 +4,258 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QR Studio – Privacy Policy</title>
-<meta name="description" content="Privacy policy for the QR Studio app: what the app stores, which permissions it uses, and how your data is handled.">
+<meta name="description" content="Privacy policy for the QR Studio app by Hafiz Muhammad Usman: what the app stores, which permissions it uses and how your data is handled.">
+<meta name="theme-color" content="#0b1020">
 <style>
   :root {
-    --bg: #f7f7fc;
+    --bg: #f4f4fb;
     --card: #ffffff;
-    --text: #1b1b2f;
-    --muted: #5d5d78;
-    --line: #e4e4f0;
+    --card2: #f0eefc;
+    --text: #1a1a2e;
+    --muted: #5b5b78;
+    --line: #e3e3f1;
     --accent: #6c4dff;
     --accent2: #0aa5c0;
-    --note: #eeeaff;
+    --shadow: 0 10px 30px rgba(60, 40, 160, .10);
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0e1120;
-      --card: #171a2e;
-      --text: #ececf7;
-      --muted: #a2a4c0;
-      --line: #2a2e4a;
+      --bg: #0c0f1d;
+      --card: #151933;
+      --card2: #1c1f40;
+      --text: #ececf8;
+      --muted: #a3a6c4;
+      --line: #292d52;
       --accent: #a592ff;
       --accent2: #34d3ee;
-      --note: #1f1d3d;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
     }
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.65;
+    line-height: 1.7;
   }
+  a { color: var(--accent); word-break: break-word; }
+
+  /* ---------- hero ---------- */
   header {
-    background: linear-gradient(135deg, #0b1020, #2a1b6b);
+    position: relative;
+    overflow: hidden;
     color: #fff;
-    padding: 40px 20px 36px;
     text-align: center;
+    padding: 56px 20px 74px;
+    background: linear-gradient(145deg, #0b1020 0%, #1d1456 60%, #2a1b6b 100%);
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: .55;
+    animation: drift 14s ease-in-out infinite alternate;
+  }
+  .blob.b1 { width: 280px; height: 280px; background: #22d3ee; top: -90px; left: -70px; }
+  .blob.b2 { width: 320px; height: 320px; background: #7c5cff; bottom: -140px; right: -80px; animation-delay: -6s; }
+  .blob.b3 { width: 200px; height: 200px; background: #ff5caa; top: 40%; left: 60%; opacity: .25; animation-delay: -3s; }
+  @keyframes drift { to { transform: translate(40px, 30px) scale(1.15); } }
+
+  .scene { perspective: 900px; width: 150px; height: 150px; margin: 0 auto 22px; position: relative; z-index: 1; }
+  .logo3d {
+    width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    animation: float 7s ease-in-out infinite;
+    filter: drop-shadow(0 26px 30px rgba(124, 92, 255, .55));
+    will-change: transform;
+  }
+  .logo3d.active { animation: none; transition: transform .12s ease-out; }
+  .logo3d.release { animation: none; transition: transform .6s cubic-bezier(.2,.9,.3,1.3); transform: rotateX(0) rotateY(0); }
+  @keyframes float {
+    0%, 100% { transform: rotateX(9deg)  rotateY(-18deg) translateY(0); }
+    50%      { transform: rotateX(-7deg) rotateY(18deg)  translateY(-10px); }
   }
   header h1 {
-    margin: 0 0 6px;
-    font-size: clamp(1.6rem, 5vw, 2.2rem);
-    background: linear-gradient(90deg, #22d3ee, #a592ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    position: relative; z-index: 1;
+    margin: 0;
+    font-size: clamp(2rem, 7vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -.5px;
+    background: linear-gradient(90deg, #22d3ee, #b9a8ff 60%, #ff8fc8);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
     display: inline-block;
   }
-  header p { margin: 4px 0 0; color: #c9c9e6; font-size: 0.95rem; }
-  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 56px; }
-  section {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 20px 22px;
-    margin-bottom: 16px;
+  header .sub { position: relative; z-index: 1; margin: 6px 0 0; color: #cfcff0; }
+  .badges {
+    position: relative; z-index: 1;
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    margin-top: 22px;
   }
-  h2 { margin: 0 0 10px; font-size: 1.15rem; color: var(--accent); }
+  .badge {
+    padding: 6px 14px; border-radius: 999px; font-size: .82rem; font-weight: 600;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
+    backdrop-filter: blur(6px);
+  }
+
+  /* ---------- layout ---------- */
+  main { max-width: 800px; margin: -36px auto 0; padding: 0 16px 56px; position: relative; z-index: 2; }
+  .toc {
+    display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 14px;
+    scrollbar-width: none;
+  }
+  .toc::-webkit-scrollbar { display: none; }
+  .toc a {
+    flex: 0 0 auto; text-decoration: none; font-size: .82rem; font-weight: 600;
+    color: var(--text); background: var(--card); border: 1px solid var(--line);
+    padding: 7px 14px; border-radius: 999px; box-shadow: var(--shadow);
+  }
+  .toc a:hover { color: var(--accent); }
+
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 18px; }
+  .gcard {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 16px; box-shadow: var(--shadow);
+  }
+  .gcard svg { width: 30px; height: 30px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 6px; }
+  .gcard b { display: block; font-size: .98rem; }
+  .gcard span { color: var(--muted); font-size: .86rem; }
+
+  section.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    padding: 22px 24px; margin-bottom: 16px; box-shadow: var(--shadow);
+    scroll-margin-top: 16px;
+  }
+  section.card h2 {
+    margin: 0 0 12px; font-size: 1.15rem; display: flex; align-items: center; gap: 10px;
+  }
+  section.card h2 .n {
+    flex: 0 0 auto; width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center;
+    font-size: .85rem; font-weight: 800; color: #fff;
+    background: linear-gradient(135deg, var(--accent2), #7c5cff);
+  }
   p { margin: 0 0 10px; }
   p:last-child { margin-bottom: 0; }
   ul { margin: 8px 0 0; padding-left: 22px; }
   li { margin-bottom: 6px; }
-  .summary { background: var(--note); border-color: transparent; }
-  .summary h2 { color: var(--text); }
-  a { color: var(--accent); word-break: break-word; }
-  .muted { color: var(--muted); font-size: 0.9rem; }
-  footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 0 16px 32px; }
+  .muted { color: var(--muted); font-size: .9rem; }
+
+  /* developer card */
+  .dev { display: flex; gap: 16px; align-items: center; margin-top: 14px; padding: 16px; border-radius: 18px; background: var(--card2); }
+  .avatar {
+    flex: 0 0 auto; width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center;
+    font-weight: 900; font-size: 1.35rem; color: #fff;
+    background: linear-gradient(135deg, #22d3ee, #7c5cff 70%, #ff5caa);
+    box-shadow: 0 8px 20px rgba(124, 92, 255, .45);
+  }
+  .dev .name { font-weight: 800; font-size: 1.1rem; line-height: 1.3; }
+  .dev .role { color: var(--muted); font-size: .9rem; }
+  .dev a { font-size: .9rem; font-weight: 600; }
+
+  /* permissions */
+  .perms { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 8px; }
+  .perm { background: var(--card2); border-radius: 16px; padding: 14px 16px; }
+  .perm b { display: block; margin-bottom: 2px; }
+  .perm span { color: var(--muted); font-size: .9rem; }
+
+  .note { background: var(--card2); border-radius: 14px; padding: 12px 14px; margin-top: 12px; font-size: .92rem; }
+
+  footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 0 16px 36px; }
+  footer b { color: var(--text); }
+
+  /* ---------- 3D reveal + hover tilt ---------- */
+  .reveal {
+    opacity: 0;
+    transform: perspective(900px) rotateX(14deg) translateY(30px);
+    transform-origin: 50% 0;
+    transition: opacity .7s ease, transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.in { opacity: 1; transform: perspective(900px) rotateX(0) translateY(0); }
+  .tilt { transition: transform .15s ease-out, box-shadow .2s; will-change: transform; }
+  .tilt.in { transition: transform .15s ease-out, opacity .7s ease; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .blob, .logo3d { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
 </style>
 </head>
 <body>
 
-<header>
+<header id="top">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="scene"><div class="logo3d" id="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1024 1024"><defs>
+<linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1020"/><stop offset="1" stop-color="#2A1B6B"/></linearGradient>
+<linearGradient id="eg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#8B6CFF"/></linearGradient>
+<linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34D399"/><stop offset="1" stop-color="#22D3EE"/></linearGradient>
+<linearGradient id="bg2" gradientUnits="userSpaceOnUse" x1="110" y1="0" x2="914" y2="0"><stop offset="0" stop-color="#34D399" stop-opacity="0"/><stop offset="0.2" stop-color="#34D399"/><stop offset="0.8" stop-color="#22D3EE"/><stop offset="1" stop-color="#22D3EE" stop-opacity="0"/></linearGradient>
+<filter id="glow" filterUnits="userSpaceOnUse" x="0" y="400" width="1024" height="224"><feGaussianBlur stdDeviation="16"/></filter>
+</defs><rect width="1024" height="1024" rx="230" fill="url(#bgrad)"/>
+<path d="M276 200H384A76 76 0 0 1 460 276V384A76 76 0 0 1 384 460H276A76 76 0 0 1 200 384V276A76 76 0 0 1 276 200ZM292 254H368A38 38 0 0 1 406 292V368A38 38 0 0 1 368 406H292A38 38 0 0 1 254 368V292A38 38 0 0 1 292 254Z" fill="url(#eg)" fill-rule="evenodd"/><path d="M314 290H346A24 24 0 0 1 370 314V346A24 24 0 0 1 346 370H314A24 24 0 0 1 290 346V314A24 24 0 0 1 314 290Z" fill="url(#eg)"/><path d="M640 200H748A76 76 0 0 1 824 276V384A76 76 0 0 1 748 460H640A76 76 0 0 1 564 384V276A76 76 0 0 1 640 200ZM656 254H732A38 38 0 0 1 770 292V368A38 38 0 0 1 732 406H656A38 38 0 0 1 618 368V292A38 38 0 0 1 656 254Z" fill="url(#eg)" fill-rule="evenodd"/><path d="M678 290H710A24 24 0 0 1 734 314V346A24 24 0 0 1 710 370H678A24 24 0 0 1 654 346V314A24 24 0 0 1 678 290Z" fill="url(#eg)"/><path d="M276 564H384A76 76 0 0 1 460 640V748A76 76 0 0 1 384 824H276A76 76 0 0 1 200 748V640A76 76 0 0 1 276 564ZM292 618H368A38 38 0 0 1 406 656V732A38 38 0 0 1 368 770H292A38 38 0 0 1 254 732V656A38 38 0 0 1 292 618Z" fill="url(#eg)" fill-rule="evenodd"/><path d="M314 654H346A24 24 0 0 1 370 678V710A24 24 0 0 1 346 734H314A24 24 0 0 1 290 710V678A24 24 0 0 1 314 654Z" fill="url(#eg)"/>
+<circle cx="594" cy="594" r="31" fill="url(#tg)"/><circle cx="594" cy="730" r="20" fill="#22D3EE" fill-opacity="0.75"/><circle cx="594" cy="798" r="20" fill="#22D3EE" fill-opacity="0.75"/><circle cx="662" cy="662" r="31" fill="url(#tg)"/><circle cx="662" cy="798" r="20" fill="#22D3EE" fill-opacity="0.75"/><circle cx="730" cy="594" r="20" fill="#22D3EE" fill-opacity="0.75"/><circle cx="730" cy="730" r="31" fill="url(#tg)"/><circle cx="798" cy="594" r="20" fill="#22D3EE" fill-opacity="0.75"/><circle cx="798" cy="662" r="20" fill="#22D3EE" fill-opacity="0.75"/><circle cx="798" cy="798" r="31" fill="url(#tg)"/>
+<line x1="110" y1="512" x2="914" y2="512" stroke="url(#bg2)" stroke-width="30" stroke-linecap="round" filter="url(#glow)" opacity="0.9"/>
+<line x1="110" y1="512" x2="914" y2="512" stroke="url(#bg2)" stroke-width="14" stroke-linecap="round"/>
+</svg></div></div>
   <h1>QR Studio</h1>
-  <p>Privacy Policy</p>
-  <p>Effective date: November 8, 2026</p>
+  <p class="sub">Privacy Policy &nbsp;•&nbsp; Effective November 8, 2026</p>
+  <div class="badges">
+    <span class="badge">No account</span>
+    <span class="badge">No ads</span>
+    <span class="badge">Works on your device</span>
+    <span class="badge">No tracking by us</span>
+  </div>
 </header>
 
 <main>
 
-  <section class="summary">
-    <h2>In short</h2>
-    <p>QR Studio has no accounts and no servers of its own. The codes you scan and create, your history and your settings stay on your device. We do not sell your data and we do not show ads at the moment.</p>
+  <nav class="toc" aria-label="Sections">
+    <a href="#who">Who we are</a>
+    <a href="#not-collected">What we don’t collect</a>
+    <a href="#stored">Stored on device</a>
+    <a href="#permissions">Permissions</a>
+    <a href="#third">Third parties</a>
+    <a href="#sharing">Sharing</a>
+    <a href="#children">Children</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="glance reveal">
+    <div class="gcard tilt">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/><path d="M3 3l18 18"/></svg>
+      <b>No account</b><span>Nothing to sign up for.</span>
+    </div>
+    <div class="gcard tilt">
+      <svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+      <b>On your device</b><span>Scans, codes and history stay on your phone.</span>
+    </div>
+    <div class="gcard tilt">
+      <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      <b>You are in control</b><span>Delete everything in one tap.</span>
+    </div>
+    <div class="gcard tilt">
+      <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0116 0"/><path d="M2 12h20"/><path d="M12 4v16"/></svg>
+      <b>No ads right now</b><span>No ad networks inside the app.</span>
+    </div>
+  </div>
+
+  <section class="card reveal tilt" id="who">
+    <h2><span class="n">1</span> Who we are</h2>
+    <p>QR Studio (“the app”) is a QR code scanner and generator for Android. It is created and published by:</p>
+    <div class="dev">
+      <div class="avatar" aria-hidden="true">HU</div>
+      <div>
+        <div class="name">Hafiz Muhammad Usman</div>
+        <div class="role">Web &amp; App Developer</div>
+        <a href="mailto:usmaniftikhar2803@gmail.com">usmaniftikhar2803@gmail.com</a>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:12px">In this policy, “we”, “us” and “our” mean Hafiz Muhammad Usman.</p>
   </section>
 
-  <section>
-    <h2>1. Who we are</h2>
-    <p>QR Studio (“the app”) is a QR code scanner and generator for Android, published by its independent developer (“we”, “us”). You can reach us at <a href="mailto:usmaniftikhar2803@gmail.com">usmaniftikhar2803@gmail.com</a>.</p>
-  </section>
-
-  <section>
-    <h2>2. What we do not collect</h2>
+  <section class="card reveal tilt" id="not-collected">
+    <h2><span class="n">2</span> What we do not collect</h2>
     <ul>
       <li>We do not ask you to create an account or sign in.</li>
       <li>We do not collect your name, email address, phone number, location or contacts.</li>
@@ -103,59 +264,122 @@
     </ul>
   </section>
 
-  <section>
-    <h2>3. What is stored on your device</h2>
+  <section class="card reveal tilt" id="stored">
+    <h2><span class="n">3</span> What is stored on your device</h2>
     <p>To work properly, the app saves the following <strong>only on your device</strong>:</p>
     <ul>
       <li><strong>History:</strong> the text of codes you scanned or chose to save, their type, date and your favorites.</li>
       <li><strong>Settings:</strong> your chosen language.</li>
     </ul>
-    <p>You can delete your history at any time in <em>Settings → Delete all history</em>. Clearing the app’s storage or uninstalling the app also removes this data.</p>
+    <p style="margin-top:10px">You can delete your history at any time in <em>Settings → Delete all history</em>. Clearing the app’s storage or uninstalling the app also removes this data.</p>
   </section>
 
-  <section>
-    <h2>4. Permissions the app uses</h2>
-    <ul>
-      <li><strong>Camera:</strong> to scan QR codes and barcodes. The camera image is processed on your device.</li>
-      <li><strong>Photos / media:</strong> only when you choose an image to scan or to use as a logo (through the system picker), or when you save a generated QR code to your gallery. On Android 9 and older, the app may request storage permission to save images.</li>
-    </ul>
-    <p>You can withdraw any permission at any time in your phone’s settings.</p>
+  <section class="card reveal tilt" id="permissions">
+    <h2><span class="n">4</span> Permissions the app uses</h2>
+    <div class="perms">
+      <div class="perm"><b>Camera</b><span>To scan QR codes and barcodes. The camera image is processed on your device.</span></div>
+      <div class="perm"><b>Photos / media</b><span>Only when you pick an image to scan or use as a logo (through the system picker), or save a QR code to your gallery. Android 9 and older may ask for storage permission to save images.</span></div>
+    </div>
+    <p class="muted" style="margin-top:12px">You can withdraw any permission at any time in your phone’s settings.</p>
   </section>
 
-  <section>
-    <h2>5. Third-party components</h2>
-    <p><strong>Google ML Kit (barcode scanning).</strong> Scanning runs on your device using Google’s ML Kit library. According to Google’s published disclosure, ML Kit may collect limited technical information such as device information (manufacturer, model, OS version), app information (package name and version) and performance metrics, used for diagnostics and usage analytics. Google states that this data is encrypted in transit and is not shared with third parties. This data is handled by Google, not by us. Learn more at <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">developers.google.com/ml-kit/android-data-disclosure</a>.</p>
+  <section class="card reveal tilt" id="third">
+    <h2><span class="n">5</span> Third-party components</h2>
+    <p><strong>Google ML Kit (barcode scanning).</strong> Scanning runs on your device using Google’s ML Kit library. According to Google’s published disclosure, ML Kit may collect limited technical information such as device information (manufacturer, model, OS version), app information (package name and version) and performance metrics, used for diagnostics and usage analytics. Google states that this data is encrypted in transit and is not shared with third parties. This data is handled by Google, not by us.</p>
+    <div class="note">Learn more: <a href="https://developers.google.com/ml-kit/android-data-disclosure" rel="noopener">developers.google.com/ml-kit/android-data-disclosure</a></div>
   </section>
 
-  <section>
-    <h2>6. Sharing and opening links</h2>
+  <section class="card reveal tilt" id="sharing">
+    <h2><span class="n">6</span> Sharing and opening links</h2>
     <p>When you tap <em>Share</em>, the app hands the code or file to the Android share sheet, and you decide which app receives it. When you tap <em>Open</em> on a scanned link, the link opens in your browser or another app on your device. Those apps and websites have their own privacy policies.</p>
-    <p>A QR code can contain any link or text. Only open links from sources you trust.</p>
+    <div class="note">A QR code can contain any link or text. Only open links from sources you trust.</div>
   </section>
 
-  <section>
-    <h2>7. Children</h2>
-    <p>The app is not directed at children under 13 and we do not knowingly collect personal information from anyone, including children.</p>
+  <section class="card reveal tilt" id="children">
+    <h2><span class="n">7</span> Children</h2>
+    <p>The app is not directed at children under 13, and we do not knowingly collect personal information from anyone, including children.</p>
   </section>
 
-  <section>
-    <h2>8. Your choices</h2>
-    <p>Because we do not hold your personal data on any server, there is nothing for us to export or erase on your behalf. You are in control of everything the app stores through the settings described above. If you have any questions, contact us at the email address below.</p>
+  <section class="card reveal tilt" id="choices">
+    <h2><span class="n">8</span> Your choices</h2>
+    <p>Because we do not hold your personal data on any server, there is nothing for us to export or erase on your behalf. You control everything the app stores through the settings described above. If you have questions, contact us at the email address below.</p>
   </section>
 
-  <section>
-    <h2>9. Changes to this policy</h2>
+  <section class="card reveal tilt" id="changes">
+    <h2><span class="n">9</span> Changes to this policy</h2>
     <p>If the app changes in a way that affects privacy (for example, if advertising or analytics is added), we will update this page and its effective date before the change takes effect.</p>
   </section>
 
-  <section>
-    <h2>10. Contact</h2>
-    <p>Questions about this policy: <a href="mailto:usmaniftikhar2803@gmail.com">usmaniftikhar2803@gmail.com</a></p>
+  <section class="card reveal tilt" id="contact">
+    <h2><span class="n">10</span> Contact</h2>
+    <p>Questions about this policy or the app:</p>
+    <div class="dev">
+      <div class="avatar" aria-hidden="true">@</div>
+      <div>
+        <div class="name">Hafiz Muhammad Usman</div>
+        <a href="mailto:usmaniftikhar2803@gmail.com">usmaniftikhar2803@gmail.com</a>
+      </div>
+    </div>
   </section>
 
 </main>
 
-<footer>© 2026 QR Studio</footer>
+<footer>© 2026 <b>Hafiz Muhammad Usman</b> · QR Studio</footer>
 
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal (3D flip-in)
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  if (reduce) return;
+
+  // Logo follows the pointer / finger
+  var header = document.getElementById('top');
+  var logo = document.getElementById('logo');
+  function tilt(x, y) {
+    var r = header.getBoundingClientRect();
+    var nx = (x - r.left) / r.width - 0.5;
+    var ny = (y - r.top) / r.height - 0.5;
+    logo.classList.remove('release');
+    logo.classList.add('active');
+    logo.style.transform = 'rotateX(' + (-ny * 40) + 'deg) rotateY(' + (nx * 55) + 'deg)';
+  }
+  function release() {
+    logo.classList.remove('active');
+    logo.classList.add('release');
+    logo.style.transform = '';
+    setTimeout(function () { logo.classList.remove('release'); }, 650);
+  }
+  header.addEventListener('pointermove', function (e) { tilt(e.clientX, e.clientY); });
+  header.addEventListener('pointerleave', release);
+  header.addEventListener('pointerup', release);
+
+  // Cards tilt on hover (mouse only)
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.tilt').forEach(function (c) {
+      c.addEventListener('pointermove', function (e) {
+        if (!c.classList.contains('in')) return;
+        var r = c.getBoundingClientRect();
+        var nx = (e.clientX - r.left) / r.width - 0.5;
+        var ny = (e.clientY - r.top) / r.height - 0.5;
+        c.style.transform = 'perspective(900px) rotateX(' + (-ny * 5) + 'deg) rotateY(' + (nx * 7) + 'deg) translateY(-2px)';
+      });
+      c.addEventListener('pointerleave', function () { c.style.transform = ''; });
+    });
+  }
+})();
+</script>
 </body>
 </html>
